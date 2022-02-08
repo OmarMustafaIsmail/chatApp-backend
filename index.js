@@ -23,6 +23,10 @@ io.on("connection",(socket)=>{
     })
     socket.on("message",(msg)=>{
         console.log(msg);
+        let targetId = msg.targetId;
+        if(clients[targetId])
+        clients[targetId].emit("message",msg);
+        
     })
 })
 
